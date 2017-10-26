@@ -1,20 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { NgModule, Injectable } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule,Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { consultingService } from './services/http.service';
+import { SearchWithObservable } from "./services/observable.service";
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { routes } from "./app.routes";
+import { AgNotesComponent } from './ag-notes/ag-notes.component';
+import { ListNotesComponent } from './list-notes/list-notes.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    AgNotesComponent,
+    ListNotesComponent,
+    TimerComponent
   ],
-  imports: [
+  imports: [    
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routes,
+    ReactiveFormsModule    
   ],
-  providers: [],
+  providers: [consultingService,SearchWithObservable],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,52 @@
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-warning form-basic">
+                <div class="panel-heading panel-note"><h3 style="text-align:center;">New Note</h3></div>
+                <div class="panel-body">
+                    <form [formGroup]="nForm" (ngSubmit)="addPost(nForm.value)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Note Title:</label>
+                            <input [ngClass]="{'invalidate-title':!nForm.controls['title'].valid && nForm.controls['title'].touched}" type="text" class="form-control txtTitle" formControlName="title" placeholder="Title">
+                            <div class="alert" *ngIf="!nForm.controls['title'].valid && nForm.controls['title'].touched">{{ titleAlert }}</div>
+                            <span class=" alertIcon" *ngIf="!nForm.controls['title'].valid && nForm.controls['title'].touched"><i class="fa fa-close"></i></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Note:</label>
+                            <textarea class="form-control" rows="5" id="comment" placeholder="Write The Note (max:400)" formControlName="bodyNote" [ngClass]="{'invalidate-title':!nForm.controls['bodyNote'].valid && nForm.controls['bodyNote'].touched}"></textarea>
+                            <div class="alert" *ngIf="!nForm.controls['bodyNote'].valid && nForm.controls['bodyNote'].touched">You must specify a description that's between 30 and 400 characters.</div>
+                            <span class=" alertIconBody" *ngIf="!nForm.controls['bodyNote'].valid && nForm.controls['bodyNote'].touched"><i class="fa fa-close"></i></span>
+                        </div>
+                        <label>
+                            <span class="label label-info">
+                                <timer></timer>
+                            </span>
+                        </label>
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-default" [disabled]="!nForm.valid">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">            
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3>Last notes aggregates
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" *ngFor="let note of notes">
+                                <span class="badge">{{note.date | date:'medium'}}</span>
+                                {{note.title}}                                
+                            </li>                            
+                        </ul>
+                    </div>
+                </div>            
+        </div>
+    </div>
+</div>
