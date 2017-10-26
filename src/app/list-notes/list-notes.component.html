@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-md-6" *ngFor="let note of Notes">
             <div class="panel panel-warning" *ngIf="note.flag">
-                
-                    <div>                                                
-                        <button class="delete button-error pure-button" (click)="delete(note); $event.stopPropagation()">x</button>
-                    </div>
-                
+
+                <div>
+                    <button class="delete button-error pure-button" (click)="delete(note); $event.stopPropagation()">x</button>
+                </div>
+
                 <div class="panel-heading text-center">
                     <h2>{{note.title}}</h2>
                     <span class="label label-info text-capitalize">{{note.date | date}}</span>

@@ -47,6 +47,14 @@ export class consultingService{
                 .catch(this.handleError)
     }
 
+    getOneNote(id):Promise<NoteItem[]>{
+        let urlApi = `http://localhost:3000/notes/${id}`;
+        return this.http.get(urlApi)
+        .toPromise()
+        .then(response=> response.json() as NoteItem[])
+        .catch(this.handleError)
+    }
+
     private extractData(res: Response) {
         let body = res.json();        
             return body || {};

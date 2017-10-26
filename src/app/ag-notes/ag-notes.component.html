@@ -4,21 +4,28 @@
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-warning form-basic">
-                <div class="panel-heading panel-note"><h3 style="text-align:center;">New Note</h3></div>
+                <div class="panel-heading panel-note">
+                    <h3 style="text-align:center;">New Note</h3>
+                </div>
                 <div class="panel-body">
                     <form [formGroup]="nForm" (ngSubmit)="addPost(nForm.value)">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Note Title:</label>
-                            <input [ngClass]="{'invalidate-title':!nForm.controls['title'].valid && nForm.controls['title'].touched}" type="text" class="form-control txtTitle" formControlName="title" placeholder="Title">
+                            <input [ngClass]="{'invalidate-title':!nForm.controls['title'].valid && nForm.controls['title'].touched}" type="text" class="form-control txtTitle"
+                                formControlName="title" placeholder="Title">
                             <div class="alert" *ngIf="!nForm.controls['title'].valid && nForm.controls['title'].touched">{{ titleAlert }}</div>
-                            <span class=" alertIcon" *ngIf="!nForm.controls['title'].valid && nForm.controls['title'].touched"><i class="fa fa-close"></i></span>
+                            <span class=" alertIcon" *ngIf="!nForm.controls['title'].valid && nForm.controls['title'].touched">
+                                <i class="fa fa-close"></i>
+                            </span>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Note:</label>
                             <textarea class="form-control" rows="5" id="comment" placeholder="Write The Note (max:400)" formControlName="bodyNote" [ngClass]="{'invalidate-title':!nForm.controls['bodyNote'].valid && nForm.controls['bodyNote'].touched}"></textarea>
                             <div class="alert" *ngIf="!nForm.controls['bodyNote'].valid && nForm.controls['bodyNote'].touched">You must specify a description that's between 30 and 400 characters.</div>
-                            <span class=" alertIconBody" *ngIf="!nForm.controls['bodyNote'].valid && nForm.controls['bodyNote'].touched"><i class="fa fa-close"></i></span>
+                            <span class=" alertIconBody" *ngIf="!nForm.controls['bodyNote'].valid && nForm.controls['bodyNote'].touched">
+                                <i class="fa fa-close"></i>
+                            </span>
                         </div>
                         <label>
                             <span class="label label-info">
@@ -32,21 +39,34 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">            
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3>Last notes aggregates
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item" *ngFor="let note of notes">
-                                <span class="badge">{{note.date | date:'medium'}}</span>
-                                {{note.title}}                                
-                            </li>                            
-                        </ul>
-                    </div>
-                </div>            
+        <div class="col-md-6" *ngIf="show">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3>Last notes aggregates
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <a *ngFor="let note of notes" class="list-group-item" (click)="select(note._id)">
+                            <span class="badge">{{note.date | date:'medium'}}</span>
+                            {{note.title}} </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" *ngIf="show2">
+            <div class="panel panel-warning">                
+
+                <div class="panel-heading text-center">
+                    <h2>{{this.note.data.title}}</h2>
+                    <span class="label label-info text-capitalize">{{this.note.data.date | date}}</span>
+                </div>
+                <div class="panel-body" style="padding:0;border:0px;height:160px;overflow-y:auto">
+                    <br>
+                    <p class=" text-center">{{ this.note.data.body }}</p>
+                    <button (click)="back()">Back</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

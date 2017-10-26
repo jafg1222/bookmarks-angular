@@ -14,7 +14,10 @@ export class AgNotesComponent implements OnInit {
   nForm:FormGroup;
   post:any;
   notes:NoteItem[] = [];
-  titleAlert:string = 'Please enter the title';  
+  note:NoteItem[];
+  titleAlert:string = 'Please enter the title';
+  show:boolean =  true;
+  show2:boolean = false;
 
 
 
@@ -43,6 +46,24 @@ export class AgNotesComponent implements OnInit {
     
         
     this.nForm.reset();
+  }
+
+  select(id:any){    
+    this.noteService.getOneNote(id)
+    .then(notas=>{
+      this.note = notas;
+      this.show=false;
+      this.show2=true;            
+    })
+    .catch(err=>{
+      console.log(err)
+    })  
+   
+  }
+
+  back(){
+    this.show=true;
+    this.show2=false;
   }
 
 }
