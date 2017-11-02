@@ -1,29 +1,15 @@
-<div class="container">
-  <div class="row">
-      <div class="col-md-12">
-          <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand text-uppercase" href="#">Bookmarks <span class="label label-success text-capitalize">Free</span></a>
-      </div>
+<header class="header-basic">
   
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navigation">
-          <ul class="nav navbar-nav navbar-right">              
-              <li><a href="#">Agregate Notes</a></li>              
-              <li><a href="#">List of Notes</a></li>
-              <li><a href="#">Profile</a></li>
-          </ul>
-      </div>
-    </div>
-  </nav>
-      </div>
-  </div>
-</div>
+        <div class="header-limiter">
+  
+          <h1><a>Company<span>logo</span></a></h1>
+  
+          <nav>
+            <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+            <a [routerLink]="['/listNotes']" routerLinkActive="active">My notes list</a>
+            <a [routerLink]="['/newNote']" routerLinkActive="active">New notes</a>            
+          </nav>
+        </div>
+  
+      </header>
+  

@@ -12,6 +12,8 @@ import { routes } from "./app.routes";
 import { AgNotesComponent } from './ag-notes/ag-notes.component';
 import { ListNotesComponent } from './list-notes/list-notes.component';
 import { TimerComponent } from './timer/timer.component';
+import { FooterComponent } from './footer/footer.component';
+import { NoteDetailComponent } from './note-detail/note-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { TimerComponent } from './timer/timer.component';
     HomeComponent,
     AgNotesComponent,
     ListNotesComponent,
-    TimerComponent
+    TimerComponent,
+    FooterComponent,
+    NoteDetailComponent
   ],
   imports: [    
     BrowserModule,

@@ -7,13 +7,14 @@ import {AgNotesComponent} from "./ag-notes/ag-notes.component";
 import {AppComponent} from "./app.component";
 import {ListNotesComponent} from "./list-notes/list-notes.component";
 import {TimerComponent} from "./timer/timer.component";
+import {NoteDetailComponent} from "./note-detail/note-detail.component";
 
 const AppRoutes:Routes = [
     {path: '', redirectTo: "/home", pathMatch: "full"},
     {path:'home', component: HomeComponent},
     {path:'newNote', component: AgNotesComponent},
-    {path:'listNotes',component: ListNotesComponent},
-    {path:'timer',component:TimerComponent}    
+    {path:'listNotes',component: ListNotesComponent},  
+    {path:'note-detail/:id',component:NoteDetailComponent}      
 ];
 
 export const routes:ModuleWithProviders = RouterModule.forRoot(AppRoutes);

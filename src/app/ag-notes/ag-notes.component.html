@@ -41,9 +41,8 @@
         </div>
         <div class="col-md-6" *ngIf="show">
             <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3>Last notes aggregates
-                    </h3>
+                <div class="panel-heading panel-note text-center">
+                    <h3>Lastest Notes</h3>
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
@@ -57,16 +56,19 @@
         <div class="col-md-6" *ngIf="show2">
             <div class="panel panel-warning">                
 
-                <div class="panel-heading text-center">
+                <div class="panel-heading panel-note  text-center">
                     <h2>{{this.note.data.title}}</h2>
                     <span class="label label-info text-capitalize">{{this.note.data.date | date}}</span>
                 </div>
                 <div class="panel-body" style="padding:0;border:0px;height:160px;overflow-y:auto">
                     <br>
-                    <p class=" text-center">{{ this.note.data.body }}</p>
-                    <button (click)="back()">Back</button>
+                    <p class=" text-center">{{ this.note.data.body }}</p>                    
                 </div>
+                <div class="panel-footer panel-note"><button (click)="back()" class="btn btn-default">Back</button></div>
             </div>
+        
+        
+            
         </div>
     </div>
 </div>

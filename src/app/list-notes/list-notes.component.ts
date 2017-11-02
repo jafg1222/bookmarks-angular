@@ -12,7 +12,7 @@ export class ListNotesComponent implements OnInit {
   constructor(private note:consultingService) {}
   
   ngOnInit() {    
-   this.note.getNotes().then(notes => this.Notes = notes);    
+   this.note.getNotes().then(notes => {this.Notes = notes; console.log(this.Notes.length)});    
   }  
 
   delete(note:NoteItem): void{
