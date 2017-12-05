@@ -9,12 +9,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class consultingService{
-    url = "http://localhost:3000/notes";    
+    url = "http://192.168.0.106:8080/api/notes";    
 
     constructor(private http:Http){        
     }
 
     getNotes(): Promise<NoteItem[]>{
+        let headers =  new Headers({'Access-Control-Allow-Origin':'*'});
         return this.http.get(this.url)
                     .toPromise()
                     .then(response => response.json().data as NoteItem[])
