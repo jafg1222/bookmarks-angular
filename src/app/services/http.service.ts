@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class consultingService{
-    url = "http://192.168.0.106:8080/api/notes";    
+    url = "https://young-waters-26375.herokuapp.com/notes";    
 
     constructor(private http:Http){        
     }
@@ -24,7 +24,7 @@ export class consultingService{
     }
 
     getLastNotes(): Promise<NoteItem[]>{
-        let ApiUrl:string = "http://localhost:3000/lastNotes";
+        let ApiUrl:string = "https://young-waters-26375.herokuapp.com/lastNotes";
         return this.http.get(ApiUrl)
         .toPromise()
         .then(response=> response.json() as NoteItem[])
@@ -49,7 +49,7 @@ export class consultingService{
     }
 
     getOneNote(id):Promise<NoteItem[]>{
-        let urlApi = `http://localhost:3000/notes/${id}`;
+        let urlApi = `https://young-waters-26375.herokuapp.com/notes/${id}`;
         return this.http.get(urlApi)
         .toPromise()
         .then(response=> response.json() as NoteItem[])
